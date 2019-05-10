@@ -13,20 +13,20 @@ public:
 	/*
 	Controller constructor
 	*/
-	Controller(Database dbase = Database{}, ShoppingBasket sbasket = ShoppingBasket{}) : database(dbase), shopping_basket(sbasket) {};
+	Controller(Database dbase, ShoppingBasket sbasket) : database(dbase), shopping_basket(sbasket) {}
 	/*
 	Controller copy constructor
 	*/
-	Controller(const Controller& ctrl) : database(ctrl.database), shopping_basket(ctrl.shopping_basket) {};
+	Controller(const Controller& ctrl) : database(ctrl.database), shopping_basket(ctrl.shopping_basket) {}
 	/*
 	Controller destructor
 	*/
-	~Controller() {};
+	~Controller() {}
 
 	/*
 	Controller function that returns an array of all trench coats from the database
 	*/
-	Database ctrlAdminGetAll();
+	Database ctrlAdminGetDatabase();
 	/*
 	Controller function that adds a trench coat to the database
 	*/

@@ -1,6 +1,6 @@
 #include "controller.h"
 
-Database Controller::ctrlAdminGetAll()
+Database Controller::ctrlAdminGetDatabase()
 {
 	return this->database;
 }

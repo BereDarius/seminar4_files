@@ -13,11 +13,10 @@ int main()
 	TrenchCoat trench_coat9{ 17, "blue", 25, 30, "www.tcoats.com/tc9.jpg" };
 	TrenchCoat trench_coat10{ 21, "orange", 5, 1, "www.tcoats.com/tc10.jpg" };
 
-	Database database;
+	DynamicVector<TrenchCoat> vector{};
+	Database database{vector};
 
-	ShoppingBasket shoppingbasket;
-
-	Controller controller{ database, shoppingbasket };
+	ShoppingBasket shoppingbasket{};
 
 	database.addTrenchCoat(trench_coat1);
 	database.addTrenchCoat(trench_coat2);
@@ -29,6 +28,8 @@ int main()
 	database.addTrenchCoat(trench_coat8);
 	database.addTrenchCoat(trench_coat9);
 	database.addTrenchCoat(trench_coat10);
+
+	Controller controller{ database, shoppingbasket };
 
 	UI ui{ controller };
 

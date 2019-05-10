@@ -13,7 +13,7 @@ public:
 	/*
 	Shopping basket constructor
 	*/
-	ShoppingBasket(DynamicVector<TrenchCoat> bask = DynamicVector<TrenchCoat>{}) : basket(bask) {};
+	ShoppingBasket(DynamicVector<TrenchCoat> bask) : basket(bask) {};
 	/*
 	Shopping basket copy constructor
 	*/

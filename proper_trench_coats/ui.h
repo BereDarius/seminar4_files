@@ -9,10 +9,9 @@ private:
 	Controller controller;
 
 public:
-
-	UI(Controller controller);
-	UI(const UI& ui) : controller(ui.controller) {};
-	~UI() {};
+	UI(Controller controller) :controller(controller) {}
+	UI(const UI& ui) : controller(ui.controller) {}
+	~UI() {}
 
 private:
 	/*

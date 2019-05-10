@@ -2,10 +2,10 @@
 
 using namespace std;
 
-UI::UI(Controller controller)
-{
-	this->controller = controller;
-}
+//UI::UI(Controller controller)
+//{
+//	this->controller = controller;
+//}
 
 int UI::getCommand()
 {
@@ -63,8 +63,8 @@ void UI::uiAdminAddTrenchCoat()
 void UI::uiAdminGetAll()
 {
 	string result = "";
-	for (int i = 0; i < this->controller.ctrlAdminGetAll().getAllTrenchCoats().getLength(); i++) {
-		result += this->controller.ctrlAdminGetAll().getAllTrenchCoats()[i].trenchCoatString() + "\n";
+	for (int i = 0; i < this->controller.ctrlAdminGetDatabase().getAllTrenchCoats().getLength(); i++) {
+		result += this->controller.ctrlAdminGetDatabase().getAllTrenchCoats()[i].trenchCoatString() + "\n";
 	}
 	cout << result << endl;
 }
@@ -119,7 +119,7 @@ void UI::uiUserGetTrenchCoatsBySize()
 		}
 	}
 	else {
-		result = this->controller.ctrlAdminGetAll().databaseString() + "\n";
+		result = this->controller.ctrlAdminGetDatabase().databaseString() + "\n";
 	}
 	cout << result << endl;
 }
@@ -135,15 +135,15 @@ void UI::uiUserAddTrenchCoatToBasket()
 			case 1:
 			{
 				index++;
-				cout << this->controller.ctrlAdminGetAll().getAllTrenchCoats()[index].trenchCoatString() << endl;
+				cout << this->controller.ctrlAdminGetDatabase().getAllTrenchCoats()[index].trenchCoatString() << endl;
 			}
 			case 2:
 			{
 				index--;
-				cout << this->controller.ctrlAdminGetAll().getAllTrenchCoats()[index].trenchCoatString() << endl;
+				cout << this->controller.ctrlAdminGetDatabase().getAllTrenchCoats()[index].trenchCoatString() << endl;
 			}
 			case 3:
-				this->controller.ctrlUserGetShoppingBasket().addTrenchCoatToBasket(this->controller.ctrlAdminGetAll().getAllTrenchCoats()[index]);
+				this->controller.ctrlUserGetShoppingBasket().addTrenchCoatToBasket(this->controller.ctrlAdminGetDatabase().getAllTrenchCoats()[index]);
 			case 0:
 				break;
 			default:
@@ -178,7 +178,7 @@ void UI::start()
 					{
 					case 0:
 					{
-						break;
+						break;	
 					}
 					case 1:
 					{
