@@ -14,9 +14,10 @@ int main()
 	TrenchCoat trench_coat10{ 21, "orange", 5, 1, "www.tcoats.com/tc10.jpg" };
 
 	DynamicVector<TrenchCoat> vector{};
+	
 	Database database{vector};
 
-	ShoppingBasket shoppingbasket{};
+	ShoppingBasket shoppingbasket{vector};
 
 	database.addTrenchCoat(trench_coat1);
 	database.addTrenchCoat(trench_coat2);
