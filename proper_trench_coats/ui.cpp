@@ -63,7 +63,7 @@ void UI::uiAdminAddTrenchCoat()
 void UI::uiAdminGetAll()
 {
 	string result = "";
-	for (int i = 0; i < this->controller.ctrlAdminGetDatabase().getAllTrenchCoats().getLength(); i++) {
+	for (int i = 0; i < this->controller.ctrlAdminGetDatabase().getAllTrenchCoats().size(); i++) {
 		result += this->controller.ctrlAdminGetDatabase().getAllTrenchCoats()[i].trenchCoatString() + "\n";
 	}
 	cout << result << endl;
@@ -114,7 +114,7 @@ void UI::uiUserGetTrenchCoatsBySize()
 	cout << "Please enter the size: ";
 	cin >> size;
 	if (size != 0) {
-		for (int i = 0; i < this->controller.ctrlUserGetTrenchCoatsBySize(size).getLength(); i++) {
+		for (int i = 0; i < this->controller.ctrlUserGetTrenchCoatsBySize(size).size(); i++) {
 			result += this->controller.ctrlUserGetTrenchCoatsBySize(size)[i].trenchCoatString() + "\n";
 		}
 	}
@@ -159,6 +159,7 @@ void UI::uiUserGetBasket()
 
 void UI::start() 
 {
+	back:
 	this->printMenuAdminUser();
 	int command1 = this->getCommand();
 	while (true)
@@ -166,7 +167,7 @@ void UI::start()
 		switch (command1)
 		{
 			case 0:
-				break;
+				goto end;
 			case 1:
 			{
 				int admin_command;
@@ -178,7 +179,7 @@ void UI::start()
 					{
 					case 0:
 					{
-						break;	
+						goto back;
 					}
 					case 1:
 					{
@@ -215,7 +216,7 @@ void UI::start()
 					switch (usercommand)
 					{
 					case 0:
-						break;
+						goto back;
 					case 1:
 						this->uiUserGetTrenchCoatsBySize();
 						break;
@@ -233,5 +234,6 @@ void UI::start()
 			default:
 				cout << "Please enter a valid command: " << endl;
 		}
+	end: break;
 	}
 }

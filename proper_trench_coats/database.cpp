@@ -2,14 +2,13 @@
 
 void Database::addTrenchCoat(TrenchCoat trenchcoat)
 {
-	this->trenchCoats.addTElem(trenchcoat);
+	this->trenchCoats.push_back(trenchcoat);
 }
 
 void Database::deleteTrenchCoat(int index)
 {
-	this->trenchCoats.deleteTElem(index);
+	this->trenchCoats.erase(this->trenchCoats.begin()+index-1);
 }
-
 void Database::updateTrenchCoat(int index, int size, std::string colour, int price, int quantity, std::string photograph)
 {
 	this->getAllTrenchCoats()[index].setSize(size);
@@ -19,14 +18,14 @@ void Database::updateTrenchCoat(int index, int size, std::string colour, int pri
 	this->getAllTrenchCoats()[index].setPhotograph(photograph);
 }
 
-DynamicVector<TrenchCoat> Database::getAllTrenchCoats() const
+std::vector<TrenchCoat> Database::getAllTrenchCoats() const
 {
 	return this->trenchCoats;
 }
 
 std::string Database::databaseString() {
 	std::string result = "";
-	for (int i = 0; i < this->trenchCoats.getLength(); i++) {
+	for (int i = 0; i < this->trenchCoats.size(); i++) {
 		result += this->getAllTrenchCoats()[i].trenchCoatString() + "\n";
 	}
 	return result;

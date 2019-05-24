@@ -1,19 +1,19 @@
 #pragma once
-#include "dynamic_vector.h"
+#include <vector>
 #include "trench_coat.h"
 
 class Database {
 
 private:
 	
-	DynamicVector<TrenchCoat> trenchCoats;
+	std::vector<TrenchCoat> trenchCoats;
 
 public:
 
 	/*
 	Database constructor
 	*/
-	Database(DynamicVector<TrenchCoat> dbase = DynamicVector<TrenchCoat>{}) : trenchCoats(dbase) {};
+	Database(std::vector<TrenchCoat> dbase = std::vector<TrenchCoat>{}) : trenchCoats(dbase) {};
 	/*
 	Database copy constructor
 	*/
@@ -46,7 +46,7 @@ public:
 	INPUT : - 
 	OUTPUT: The trenchCoats as a dynamic vector of trench coats
 	*/
-	DynamicVector<TrenchCoat> getAllTrenchCoats() const;
+	std::vector<TrenchCoat> getAllTrenchCoats() const;
 
 	/*
 	Funciton that returns the string representation of the whole trenchCoats

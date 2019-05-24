@@ -47,7 +47,7 @@ public:
 	/*
 	Controller function that returns an array of trench coats having a certain size
 	*/
-	DynamicVector<TrenchCoat> ctrlUserGetTrenchCoatsBySize(int size);
+	std::vector<TrenchCoat> ctrlUserGetTrenchCoatsBySize(int size);
 	/*
 	Controller function that adds a trench coat to the shopping basket
 	*/

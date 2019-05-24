@@ -2,7 +2,7 @@
 
 template<typename TElem>
 
-class DynamicVector {
+class std::vector {
 
 private:
 
@@ -15,15 +15,15 @@ public:
 	/*
 	Dynamic vector constructor
 	*/
-	DynamicVector(int capacity = 10);
+	std::vector(int capacity = 10);
 	/*
 	Dynamic vector copy constructor
 	*/
-	DynamicVector(const DynamicVector& dynvect);
+	std::vector(const std::vector& dynvect);
 	/*
 	Dynamic vector destructor
 	*/
-	~DynamicVector();
+	~std::vector();
 
 	/*
 	Dynnamic vector [] operator
@@ -32,11 +32,11 @@ public:
 	/*
 	Dynamic vector assignment operator
 	*/
-	DynamicVector<TElem>& operator=(const DynamicVector<TElem>& dynvect);
+	std::vector<TElem>& operator=(const std::vector<TElem>& dynvect);
 	/*
 	Dynamic + operator that adds an element to the vector
 	*/
-	DynamicVector<TElem>& operator+(const TElem& element);
+	std::vector<TElem>& operator+(const TElem& element);
 
 	/*
 	Function that returns the array
@@ -45,7 +45,7 @@ public:
 	/*
 	Funciton that adds an element to the vector
 	*/
-	void addTElem(TElem TElem);
+	void push_back(TElem TElem);
 	/*
 	Function that deletes an element from the vector
 	*/
@@ -53,18 +53,18 @@ public:
 	/*
 	Function that returns the length of the vector
 	*/
-	int getLength() const;
+	int size() const;
 
 private:
 	/*
-	Function that resizes the vector - used for the addTElem function
+	Function that resizes the vector - used for the push_back function
 	*/
 	void resize(double factor = 2);
 
 };
 
 template<typename TElem>
-inline DynamicVector<TElem>::DynamicVector(int capacity)
+inline std::vector<TElem>::std::vector(int capacity)
 {
 	this->length = 0;
 	this->capacity = capacity;
@@ -72,7 +72,7 @@ inline DynamicVector<TElem>::DynamicVector(int capacity)
 }
 
 template<typename TElem>
-inline DynamicVector<TElem>::DynamicVector(const DynamicVector<TElem>& dynvect)
+inline std::vector<TElem>::std::vector(const std::vector<TElem>& dynvect)
 {
 	this->length = dynvect.length;
 	this->capacity = dynvect.capacity;
@@ -83,19 +83,19 @@ inline DynamicVector<TElem>::DynamicVector(const DynamicVector<TElem>& dynvect)
 }
 
 template<typename TElem>
-inline DynamicVector<TElem>::~DynamicVector()
+inline std::vector<TElem>::~std::vector()
 {
 	delete[] this->elements;
 }
 
 template<typename TElem>
-inline TElem & DynamicVector<TElem>::operator[](int pos)
+inline TElem & std::vector<TElem>::operator[](int pos)
 {
 	return this->elements[pos];
 }
 
 template<typename TElem>
-inline DynamicVector<TElem>& DynamicVector<TElem>::operator=(const DynamicVector<TElem>& dynvect)
+inline std::vector<TElem>& std::vector<TElem>::operator=(const std::vector<TElem>& dynvect)
 {
 	if (this == &dynvect) {
 		return *this;
@@ -110,20 +110,20 @@ inline DynamicVector<TElem>& DynamicVector<TElem>::operator=(const DynamicVector
 }
 
 template<typename TElem>
-inline DynamicVector<TElem>& DynamicVector<TElem>::operator+(const TElem & element)
+inline std::vector<TElem>& std::vector<TElem>::operator+(const TElem & element)
 {
-	this->addTElem(element);
+	this->push_back(element);
 	return *this;
 }
 
 template<typename TElem>
-inline TElem * DynamicVector<TElem>::getAll()
+inline TElem * std::vector<TElem>::getAll()
 {
 	return this->elements;
 }
 
 template<typename TElem>
-inline void DynamicVector<TElem>::addTElem(TElem element)
+inline void std::vector<TElem>::push_back(TElem element)
 {
 	if (this->length == this->capacity)
 		this->resize();
@@ -132,7 +132,7 @@ inline void DynamicVector<TElem>::addTElem(TElem element)
 }
 
 template<typename TElem>
-inline void DynamicVector<TElem>::deleteTElem(int index)
+inline void std::vector<TElem>::deleteTElem(int index)
 {
 	for (int i = index + 1; i < this->length; i++) {
 		this->elements[i - 1] = this->elements[i];
@@ -141,13 +141,13 @@ inline void DynamicVector<TElem>::deleteTElem(int index)
 }
 
 template<typename TElem>
-inline int DynamicVector<TElem>::getLength() const
+inline int std::vector<TElem>::size() const
 {
 	return this->length;
 }
 
 template <typename TElem>
-void DynamicVector<TElem>::resize(double factor)
+void std::vector<TElem>::resize(double factor)
 {
 	this->capacity = (int)(factor * this->capacity);
 

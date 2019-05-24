@@ -13,7 +13,7 @@ int main()
 	TrenchCoat trench_coat9{ 17, "blue", 25, 30, "www.tcoats.com/tc9.jpg" };
 	TrenchCoat trench_coat10{ 21, "orange", 5, 1, "www.tcoats.com/tc10.jpg" };
 
-	DynamicVector<TrenchCoat> vector{};
+	std::vector<TrenchCoat> vector{};
 	
 	Database database{vector};
 

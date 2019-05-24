@@ -1,19 +1,19 @@
 #include "shopping_basket.h"
 
-DynamicVector<TrenchCoat> ShoppingBasket::getShoppingBasket()
+std::vector<TrenchCoat> ShoppingBasket::getShoppingBasket()
 {
 	return this->basket;
 }
 
-DynamicVector<TrenchCoat> ShoppingBasket::getTrenchCoatsBySize(const Database& database, int size)
+std::vector<TrenchCoat> ShoppingBasket::getTrenchCoatsBySize(const Database& database, int size)
 {
-	DynamicVector<TrenchCoat> result;
-	for (int i = 0; i < database.getAllTrenchCoats().getLength(); i++) {
+	std::vector<TrenchCoat> result;
+	for (int i = 0; i < database.getAllTrenchCoats().size(); i++) {
 		if (database.getAllTrenchCoats()[i].getSize() == size) {
-			result.addTElem(database.getAllTrenchCoats()[i]);
+			result.push_back(database.getAllTrenchCoats()[i]);
 		}
 	}
-	if (result.getLength() == 0) {
+	if (result.size() == 0) {
 		result = database.getAllTrenchCoats();
 	}
 	return result;
@@ -21,28 +21,20 @@ DynamicVector<TrenchCoat> ShoppingBasket::getTrenchCoatsBySize(const Database& d
 
 void ShoppingBasket::addTrenchCoatToBasket(const TrenchCoat & trench_coat)
 {
-	this->basket.addTElem(trench_coat);
-	this->total += trench_coat.getPrice();
-}
-
-int ShoppingBasket::getTotal()
-{
-	return this->total;
-}
-
-void ShoppingBasket::setTotal(int total)
-{
-	this->total = total;
+	this->basket.push_back(trench_coat);
 }
 
 std::string ShoppingBasket::basketString()
 {
+	int total = 0;
+
 	std::string result = "";
-	for (int i = 0; i < this->basket.getLength(); i++) {
+	for (int i = 0; i < this->basket.size(); i++) {
 		result += this->basket[i].trenchCoatString() + "\n";
+		total += this->basket[i].getPrice();
 	}
 
-	result += "\nTOTAL: " + std::to_string(this->total);
+	result += "\nTOTAL: " + std::to_string(total);
 
 	return result;
 }

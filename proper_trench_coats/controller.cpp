@@ -25,7 +25,7 @@ ShoppingBasket Controller::ctrlUserGetShoppingBasket()
 	return this->shopping_basket;
 }
 
-DynamicVector<TrenchCoat> Controller::ctrlUserGetTrenchCoatsBySize(int size)
+std::vector<TrenchCoat> Controller::ctrlUserGetTrenchCoatsBySize(int size)
 {
 	return this->shopping_basket.getTrenchCoatsBySize(this->database, size);
 }
